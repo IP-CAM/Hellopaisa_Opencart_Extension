@@ -31,7 +31,7 @@ class ControllerPaymentHelloPaisa extends Controller {
 		$comment .= $this->config->get('hello_paisa_transfer_' . $this->config->get('config_language_id')) . "\n\n";
 		$comment .= $this->language->get('text_payment');
 		
-		$this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('easy_paisa_order_status_id'), $comment, true);
+		$this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('hello_paisa_order_status_id'), $comment, true);
 	}
 }
 ?>
