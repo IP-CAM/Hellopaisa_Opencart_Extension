@@ -3,7 +3,7 @@
 $_['heading_title']      = 'Hello Paisa';
 
 // User Id
-$_['hellopaisa_id']		= 'Hello Paisa ID';
+$_['hellopaisa_id']		= 'Hello Paisa ID<span class="help">Hello Paisa mobile number </span>';
  
 // Text 
 $_['text_payment']       = 'Payment';
@@ -20,4 +20,6 @@ $_['entry_sort_order']   = 'Sort Order:';
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify hello paisa transfer!';
 $_['error_hello']         = 'Hello Paisa Instructions Required!';
+$_['error_mode']        =    'Mode Required!';
+$_['hello_id']          =    'Hello paisa ID required';
 ?>

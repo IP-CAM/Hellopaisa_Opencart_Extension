@@ -19,15 +19,20 @@
           <?php foreach ($languages as $language) { ?>
           
            <tr>
-            <td><?php echo $hello_paisa_id; ?></td>
-            <td><input type="text" name="hello_paisa_id" value="<?php echo $hello_paisa_id; ?>" /></td>
+            <td><span class="required">*</span><?php echo $hellopaisa_id; ?></td>
+            <td>
+            	<input type="text" name="hello_paisa_id" value="<?php echo $hello_paisa_id; ?>" />
+            	<?php if (isset($hello_id)) { ?>
+              		<span class="error"><?php echo $hello_id; ?></span>
+              <?php } ?>
+            </td>
           </tr>
           <tr>
             <td><span class="required">*</span> <?php echo $entry_hello; ?></td>
-            <td><textarea name="hello_paisa_transfer_<?php echo $language['language_id']; ?>" cols="80" rows="10"><?php echo isset(${'easy_paisa_transfer_' . $language['language_id']}) ? ${'easy_paisa_transfer_' . $language['language_id']} : ''; ?></textarea>
+            <td><textarea name="hello_paisa_transfer_<?php echo $language['language_id']; ?>" cols="80" rows="10"><?php echo isset(${'hello_paisa_transfer_' . $language['language_id']}) ? ${'hello_paisa_transfer_' . $language['language_id']} : ''; ?></textarea>
               <img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" style="vertical-align: top;" /><br />
-              <?php if (isset(${'error_easy_' . $language['language_id']})) { ?>
-              <span class="error"><?php echo ${'error_easy_' . $language['language_id']}; ?></span>
+              <?php if (isset(${'error_hello_' . $language['language_id']})) { ?>
+              		<span class="error"><?php echo ${'error_hello_' . $language['language_id']}; ?></span>
               <?php } ?></td>
           </tr>
           <?php } ?>
@@ -39,7 +44,10 @@
             <td><?php echo $entry_order_status; ?></td>
             <td><select name="hello_paisa_order_status_id">
                 <?php foreach ($order_statuses as $order_status) { ?>
-                <?php if ($order_status['order_status_id'] == $hello_paisa_order_status_id) { ?>
+                <?php if ($order_status['order_status_id'] == $hello_paisa_order_status_id) { 
+                	echo $order_status['order_status_id'];
+                    echo $hello_paisa_order_status_id;
+                ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
                 <?php } else { ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
@@ -62,8 +70,8 @@
           </tr>
           <tr>
             <td><?php echo $entry_status; ?></td>
-            <td><select name="hello_paisa_status">
-                <?php if ($hello_paisa_status) { ?>
+            <td><select name="hellopaisa_status">
+                <?php if ($hellopaisa_status) { ?>
                 <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
                 <option value="0"><?php echo $text_disabled; ?></option>
                 <?php } else { ?>

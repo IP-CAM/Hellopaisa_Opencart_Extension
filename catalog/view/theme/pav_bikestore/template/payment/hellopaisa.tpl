@@ -1,7 +1,7 @@
 <h2><?php echo $text_instruction; ?></h2>
 <div class="content">
   <p><?php echo $text_description; ?></p>
-  <p><?php echo $easy; ?></p>
+  <p><?php //echo $easy; ?></p>
   <p><?php echo $text_payment; ?></p>
 </div>
 <div class="buttons">

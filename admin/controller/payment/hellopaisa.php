@@ -1,4 +1,12 @@
 <?php 
+/* 
+ * Hellopaisa online payment
+ *
+ * @version 1.0
+ * @date 21/12/2013
+ * @author Yujesh K.C (Khadka) <ujesh.kc@gmail.com>
+ * @more info available on w3webstudio.com
+ */
 class ControllerPaymentHelloPaisa extends Controller {
 	private $error = array(); 
 
@@ -7,9 +15,7 @@ class ControllerPaymentHelloPaisa extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('setting/setting');
-			
-		
+		$this->load->model('setting/setting');	
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('hellopaisa', $this->request->post);				
@@ -40,6 +46,16 @@ class ControllerPaymentHelloPaisa extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}
+		
+		
+		if (isset($this->error['hello_id'])) {
+			$this->data['hello_id'] = $this->error['hello_id'];
+		} else {
+			$this->data['hello_id'] = '';
+		}
+
+		
+
 		
 		$this->load->model('localisation/language');
 		
@@ -115,10 +131,10 @@ class ControllerPaymentHelloPaisa extends Controller {
 										
 		$this->data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 		
-		if (isset($this->request->post['hello_paisa_status'])) {
-			$this->data['hello_paisa_status'] = $this->request->post['hello_paisa_status'];
+		if (isset($this->request->post['hellopaisa_status'])) {
+			$this->data['hellopaisa_status'] = $this->request->post['hellopaisa_status'];
 		} else {
-			$this->data['hello_paisa_status'] = $this->config->get('hello_paisa_status');
+			$this->data['hello_paisastatus'] = $this->config->get('hellopaisa_status');
 		}
 		
 		if (isset($this->request->post['hello_paisa_sort_order'])) {
@@ -151,6 +167,10 @@ class ControllerPaymentHelloPaisa extends Controller {
 		$this->load->model('localisation/language');
 
 		$languages = $this->model_localisation_language->getLanguages();
+		
+		if (!$this->request->post['hello_paisa_id']) {
+			$this->error['hello_id'] = $this->language->get('hello_id');
+		}
 		
 		foreach ($languages as $language) {
 			if (!$this->request->post['hello_paisa_transfer_' . $language['language_id']]) {
